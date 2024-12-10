@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
         btnAddFragment.setOnClickListener(v -> {
             String inputText = editText.getText().toString();
+
+            if (inputText.isEmpty()) {
+                Toast.makeText(MainActivity.this, "El campo de texto está vacío", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             // Crear una instancia del fragmento con el texto ingresado
             Fragment textFragment = TextFragment.newInstance(inputText);
